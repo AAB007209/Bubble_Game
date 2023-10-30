@@ -46,6 +46,6 @@ document.querySelector("#pbtm").addEventListener("click", function (dets) {
     }
 });
 
-// runTimer();
+runTimer();
 makeBubble();
 getNewHit();
