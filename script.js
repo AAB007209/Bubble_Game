@@ -3,8 +3,10 @@ var score = 0;
 var hitrn = 0;
 
 function increaseScore() {
-    score += 10;
-    document.querySelector("#scoreVal").textContent = score;
+    if (timer < 60 && timer > 0) {
+        score += 10;
+        document.querySelector("#scoreVal").textContent = score;
+    }
 }
 
 function getNewHit() {
@@ -46,6 +48,20 @@ document.querySelector("#pbtm").addEventListener("click", function (dets) {
     }
 });
 
-runTimer();
+const startBtn = document.querySelector("#btnStart");
+
+startBtn.addEventListener("click", function () {
+    runTimer();
+    startBtn.disabled = true;
+});
+
 makeBubble();
 getNewHit();
+
+document.querySelector("#btnRestart").addEventListener("click", function () {
+    if (timer == 0) {
+        timer = 60;
+        score = 0;
+        location.reload();
+    }
+});
